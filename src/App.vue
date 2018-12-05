@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <app-header></app-header>
-    <div class="row">
-      <div class="col-xs-12">
+    <div class="row mt-4">
+      <div class="col">
         <router-view></router-view>
       </div>
     </div>
