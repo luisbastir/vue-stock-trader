@@ -9,18 +9,17 @@
       <span class="navbar-text ml-3">Funds: {{ funds | currency }}</span>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item"><a href="#" class="nav-link" @click="endDay">End Day</a></li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" :class="{show: isDropdownOpen}" @click="isDropdownOpen = !isDropdownOpen">
           <a
-            href="#"
             class="nav-link dropdown-toggle"
             data-toggle="dropdown"
             role="button" aria-haspopup="true"
             aria-expanded="false">
             Save &amp; Load <span class="caret"></span>
           </a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Save Data</a></li>
-            <li><a href="#">Load Data</a></li>
+          <ul class="dropdown-menu" :class="{show: isDropdownOpen}">
+            <li class="dropdown-item">Save Data</li>
+            <li class="dropdown-item">Load Data</li>
           </ul>
         </li>
       </ul>
@@ -31,6 +30,11 @@
 <script>
 import { mapActions } from "vuex"
 export default {
+  data() {
+    return {
+      isDropdownOpen: false
+    }
+  },
   computed: {
     funds() {
       return this.$store.getters.funds
